@@ -4,3 +4,4 @@ __pycache__
 doc/books/*.pdf
 .DS_Store
 code/SCRATCH.ipynb
+data/*
