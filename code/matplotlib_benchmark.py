@@ -1,4 +1,4 @@
-#!/opt/pkg/bin/python
+#!/usr/bin/env python3
 
 from pylab import *
 import time
@@ -11,6 +11,7 @@ import os.path
 def is_backend_module(fname):
     """Identifies if a filename is a matplotlib backend module"""
     return fname.startswith('backend_') and fname.endswith('.py')
+
 
 def backend_fname_formatter(fname): 
     """Removes the extension of the given filename, then takes away the leading 'backend_'."""
