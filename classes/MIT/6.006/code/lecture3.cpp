@@ -53,7 +53,13 @@ std::vector<int> mergeSort(
 		}
 	}
 
-	std::copy(f2, l2, r);
+	/*
+	 * If our first array the longer one,
+	 * copy the remaining elements.
+	 */
+	if(f1 != l1) {
+		std::copy(f1, l1, r);
+	}
 
 	return result;
 
