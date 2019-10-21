@@ -11,4 +11,4 @@ Note that the `affixalex/notebook` image is very large, although it can
 also run C++ kernels. The C++ support is, shall we say, a bit finicky so 
 my actual effort here is with Python. The workflow that I'm trying to 
 develop is, in effect, to prototype solutions with Python and then write
-much more high performance solutions in C++. 
+much more high performance solutions in C++.
