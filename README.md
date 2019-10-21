@@ -2,8 +2,10 @@
 
 To run locally, just do:
 
-    docker run -v~/path/to/machine_learning:/notebook -p8888:8888
+    docker run -it -p8888:8888 -v$HOME/code/machine_learning:/notebook \
     affixalex/notebook:latest
+
+I run with `-it` so I can just do Ctrl+C to close the container easily.
 
 Note that the `affixalex/notebook` image is very large, although it can 
 also run C++ kernels. The C++ support is, shall we say, a bit finicky so 
