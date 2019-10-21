@@ -18,6 +18,13 @@ RUN CONDA_VERSION="4.7.12" && \
     chmod 777 "$CONDA_DIR/locks" && \
     conda install jupyter xeus-cling -c conda-forge
 
+RUN conda install tensorflow \
+        scipy \
+        cython \
+        matplotlib \
+        pandas \
+        networkx -c conda-forge
+
 RUN mkdir /notebook
 EXPOSE 8888
 CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root /notebook
