@@ -22,9 +22,9 @@ void insertionSort(std::vector<int> &nums) {
  * This is a classic divide and conquer algorithm.
  */
 std::vector<int> mergeSort(
-		std::shared_ptr<std::vector<int>> nums1,
-		std::shared_ptr<std::vector<int>> nums2)
-{
+		std::vector<int> *nums1,
+		std::vector<int> *nums2
+) {
 	std::vector<int> result(nums1->size() + nums2->size());
 
 	auto r = result.begin();
@@ -56,11 +56,8 @@ std::vector<int> mergeSort(
 }
 
 int main(int argc, char *argv[]) {
-	std::shared_ptr<std::vector<int>> nums1 =
-		std::make_shared<std::vector<int>>(5);
-
-	std::shared_ptr<std::vector<int>> nums2 =
-		std::make_unique<std::vector<int>>(10);
+	std::vector<int> nums1 = std::vector<int>(10);
+	std::vector<int> nums2 = std::vector<int>(5);
 
 	std::random_device rnd_dev;
 	std::default_random_engine rnd_eng;
@@ -70,8 +67,8 @@ int main(int argc, char *argv[]) {
 	};
 	
 
-	std::generate(nums1->begin(), nums1->end(), gen);
-	std::generate(nums2->begin(), nums2->end(), gen);
+	std::generate(nums1.begin(), nums1.end(), gen);
+	std::generate(nums2.begin(), nums2.end(), gen);
 
 	/*
 	 * The easy way to do this:
@@ -84,23 +81,23 @@ int main(int argc, char *argv[]) {
 	 *
 	 */
 
-	insertionSort(*nums1);
-	insertionSort(*nums2);
+	insertionSort(nums1);
+	insertionSort(nums2);
 
-	for(auto num: *nums1) {
+	for(int num: nums1) {
 		std::cout << num << " ";
 	}
 	std::cout << std::endl;
-	for(auto num: *nums2) {
+	for(int num: nums2) {
 		std::cout << num << " ";
 	}
 	std::cout << std::endl;
 
 
 	// And, again, we could just do std::merge() 
-	std::vector<int> output = mergeSort(nums1, nums2);
+	std::vector<int> output = mergeSort(&nums1, &nums2);
 
-	for(auto num: output) {
+	for(int num: output) {
 		std::cout << num << " ";
 	}
 	std::cout << std::endl;
