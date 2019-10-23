@@ -11,7 +11,7 @@
  * the simplicity of this implementation.
  */
 void insertionSort(std::vector<int> &nums) {
-	for(auto i = nums.begin(); i!= nums.end(); i++) {
+	for(auto i = nums.begin(); i != nums.end(); i++) {
 		auto const ip = std::upper_bound(nums.begin(), i, *i);
 		std::rotate(ip, i, i+1);
 	}
@@ -66,10 +66,10 @@ std::vector<int> mergeSort(
 }
 
 int main(int argc, char *argv[]) {
-	std::shared_ptr<std::vector<int>> nums1 = 
+	std::shared_ptr<std::vector<int>> nums1 =
 		std::make_shared<std::vector<int>>(10);
 
-	std::shared_ptr<std::vector<int>> nums2 = 
+	std::shared_ptr<std::vector<int>> nums2 =
 		std::make_unique<std::vector<int>>(5);
 
 	std::random_device rnd_dev;
