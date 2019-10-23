@@ -23,7 +23,7 @@ double GetScoresAndAverage(std::vector<int> scores) {
 	for(int i: scores) {
 		sum += i;
 	}
-	result = sum / scores.size();
+	result = double(sum) / scores.size();
 	return result;
 };
 
@@ -32,9 +32,15 @@ std::vector<int> GenerateRandomScores(int NumScores) {
 	std::mt19937 rnd_eng;
 	std::uniform_int_distribution<int> rnd_dst{1, 100};
 	auto gen = std::bind(rnd_dst, rnd_eng);
+	/*
+	 * This syntax rocks.
+	 * "Automatically take the address of I for each item in the result"
+	 *
+	 */
 	for(auto &i: result) {
 		i = gen();
 	}
+	// Yes, I do realize I could've done this in the previous loop.
 	for (auto &i: result) {
 		std::cout << i << std::endl;
 	}
