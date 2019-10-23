@@ -5,3 +5,4 @@ doc/books/*.pdf
 .DS_Store
 code/SCRATCH.ipynb
 data/*
+**/**/*.exe
