@@ -6,3 +6,4 @@ doc/books/*.pdf
 code/SCRATCH.ipynb
 data/*
 **/**/*.exe
+**/**/*.dwo
