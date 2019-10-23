@@ -29,48 +29,38 @@ std::vector<int> mergeSort(
 
 	auto r = result.begin();
 
-	auto f1 = nums1->begin();
-	auto f2 = nums2->begin();
-	auto l1 = nums1->end();
-	auto l2 = nums2->end();
+	auto l1 = nums1->begin();
+	auto r1 = nums2->begin();
+	auto l2 = nums1->end();
+	auto r2 = nums2->end();
 
-	for(;f1 != l1;r++) {
-		/*
-		 * If our second array is empty, we can just return our
-		 * first array since it is already sorted.
-		 */
-		if (f2 == l2) {
-			std::copy(f1, l1, r);
-			break;
-		}
-		/* Now we compare and move forward... */
-		if (*f2 < *f1) {
-			*r = *f2;
-			f2++;
+	do {
+		if (*l1 < *r1) {
+			*r = *l1;
+			l1++;
 		} else {
-			*r = *f1;
-			f1++;
+			*r = *r1;
+			r1++;
 		}
-	}
+		r++;
+	} while(l1 != l2 && r1 != r2);
 
-	/*
-	 * If our first array the longer one,
-	 * copy the remaining elements.
-	 */
-	if(f1 != l1) {
-		std::copy(f1, l1, r);
+	if (l1 != l2) {
+		std::copy(l1, l2, r);
+	}
+	if (r1 != r2) {
+		std::copy(r1, r2, r);
 	}
 
 	return result;
-
 }
 
 int main(int argc, char *argv[]) {
 	std::shared_ptr<std::vector<int>> nums1 =
-		std::make_shared<std::vector<int>>(10);
+		std::make_shared<std::vector<int>>(5);
 
 	std::shared_ptr<std::vector<int>> nums2 =
-		std::make_unique<std::vector<int>>(5);
+		std::make_unique<std::vector<int>>(10);
 
 	std::random_device rnd_dev;
 	std::default_random_engine rnd_eng;
