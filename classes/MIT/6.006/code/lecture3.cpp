@@ -22,34 +22,34 @@ void insertionSort(std::vector<int> &nums) {
  * This is a classic divide and conquer algorithm.
  */
 std::vector<int> mergeSort(
-		std::vector<int> *nums1,
-		std::vector<int> *nums2
+		std::vector<int> *left,
+		std::vector<int> *right
 ) {
-	std::vector<int> result(nums1->size() + nums2->size());
+	std::vector<int> result(left->size() + right->size());
 
-	auto r = result.begin();
+	auto result_index = result.begin();
 
-	auto l1 = nums1->begin();
-	auto r1 = nums2->begin();
-	auto l2 = nums1->end();
-	auto r2 = nums2->end();
+	auto left_front = left->begin();
+	auto left_back = right->end();
+	auto right_front = right->begin();
+	auto right_back = right->end();
 
 	do {
-		if (*l1 < *r1) {
-			*r = *l1;
-			l1++;
+		if (*left_front < *right_front) {
+			*result_index = *left_front;
+			left_front++;
 		} else {
-			*r = *r1;
-			r1++;
+			*result_index = *right_front;
+			right_front++;
 		}
-		r++;
-	} while(l1 != l2 && r1 != r2);
+		result_index++;
+	} while(left_front != left_back && right_front != right_back);
 
-	if (l1 != l2) {
-		std::copy(l1, l2, r);
+	if (left_front != left_back) {
+		std::copy(left_front, left_back, result_index);
 	}
-	if (r1 != r2) {
-		std::copy(r1, r2, r);
+	if (right_front != right_back) {
+		std::copy(right_front, right_back, result_index);
 	}
 
 	return result;
